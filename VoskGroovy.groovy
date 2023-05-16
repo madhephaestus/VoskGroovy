@@ -47,7 +47,7 @@ speakers = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
 speakers.open(format);
 speakers.start();
 byte[] b = new byte[4096];
-
+try{
 while (bytesRead <= 100000000 && !Thread.interrupted()) {
 	Thread.sleep(0,1);
 	numBytesRead = microphone.read(b, 0, CHUNK_SIZE);
@@ -62,6 +62,9 @@ while (bytesRead <= 100000000 && !Thread.interrupted()) {
 	} else {
 		System.out.println(recognizer.getPartialResult());
 	}
+}
+}catch(Throwable t){
+	t.printStackTrace()
 }
 System.out.println(recognizer.getFinalResult());
 speakers.drain();
