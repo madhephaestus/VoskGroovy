@@ -1,5 +1,8 @@
 @Grab(group='net.java.dev.jna', module='jna', version='5.7.0')
 @Grab(group='com.alphacephei', module='vosk', version='0.3.45')
+@Grab(group='com.alphacephei', module='vosk-model-en', version='0.3.45')
+
+
 
 import java.io.FileInputStream;
 import java.io.BufferedInputStream;
