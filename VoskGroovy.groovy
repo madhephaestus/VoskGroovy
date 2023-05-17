@@ -28,7 +28,7 @@ AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 60000, 16,
 DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 TargetDataLine microphone;
 SourceDataLine speakers;
-// model downloade from https://alphacephei.com/vosk/models 
+// model downloaded from https://alphacephei.com/vosk/models 
 //Model model = new Model(ScriptingEngine.getWorkspace().getAbsolutePath()+"/vosk-model-en-us-0.22/");
 //Model model = new Model(ScriptingEngine.getWorkspace().getAbsolutePath()+"/vosk-model-en-us-daanzu-20200905-lgraph/");
 Model model = new Model(ScriptingEngine.getWorkspace().getAbsolutePath()+"/vosk-model-en-us-daanzu-20200905/");
