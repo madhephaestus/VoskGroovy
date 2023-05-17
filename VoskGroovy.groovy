@@ -37,38 +37,43 @@ microphone = (TargetDataLine) AudioSystem.getLine(info);
 microphone.open(format);
 microphone.start();
 
-ByteArrayOutputStream out = new ByteArrayOutputStream();
+//ByteArrayOutputStream out = new ByteArrayOutputStream();
 int numBytesRead;
 int CHUNK_SIZE = 1024;
 int bytesRead = 0;
 
-DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, format);
-speakers = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
-speakers.open(format);
-speakers.start();
+//DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, format);
+//speakers = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+//speakers.open(format);
+//speakers.start();
 byte[] b = new byte[4096];
+println "Listening..."
+result="";
 try{
-while (bytesRead <= 100000000 && !Thread.interrupted()) {
-	Thread.sleep(0,1);
+while (bytesRead <= 10000000 && !Thread.interrupted()) {
+	Thread.sleep(1);
 	numBytesRead = microphone.read(b, 0, CHUNK_SIZE);
 	bytesRead += numBytesRead;
 
-	out.write(b, 0, numBytesRead);
+	//out.write(b, 0, numBytesRead);
 
-	speakers.write(b, 0, numBytesRead);
+	//speakers.write(b, 0, numBytesRead);
 
 	if (recognizer.acceptWaveForm(b, numBytesRead)) {
-		System.out.println(recognizer.getResult());
+		result=recognizer.getResult()
+		break;
 	} else {
-		System.out.println(recognizer.getPartialResult());
+		//System.out.println(recognizer.getPartialResult());
 	}
 }
 }catch(Throwable t){
 	t.printStackTrace()
 }
-System.out.println(recognizer.getFinalResult());
-speakers.drain();
-speakers.close();
+System.out.println(result);
+//speakers.drain();
+//speakers.close();
 microphone.close();
+
+return result;
 
 
