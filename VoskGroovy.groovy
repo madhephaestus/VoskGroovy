@@ -66,7 +66,7 @@ while (bytesRead <= 10000000 && !Thread.interrupted()) {
 		result=recognizer.getResult()
 		break;
 	} else {
-		//System.out.println(recognizer.getPartialResult());
+		System.out.println(recognizer.getPartialResult());
 	}
 }
 }catch(Throwable t){
