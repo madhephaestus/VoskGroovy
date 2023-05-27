@@ -64,9 +64,11 @@ while (bytesRead <= 10000000 && !Thread.interrupted()) {
 
 	if (recognizer.acceptWaveForm(b, numBytesRead)) {
 		result=recognizer.getResult()
-		break;
+		//break;
 	} else {
-		System.out.println(recognizer.getPartialResult());
+		
+		def recognizerGetPartialResult = recognizer.getPartialResult()
+		System.out.println(recognizerGetPartialResult);
 	}
 }
 }catch(Throwable t){
